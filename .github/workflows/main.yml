@@ -4,6 +4,8 @@ on:
   pull_request:
   push:
     branches: [ "1.x" ]
+    tags:
+      - 1.*
 
 permissions:
   contents: read
