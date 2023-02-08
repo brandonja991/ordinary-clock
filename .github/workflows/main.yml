@@ -22,6 +22,9 @@ jobs:
       - name: Build Container
         run: make PHP_VERSION=${{ matrix.php-version }} php-image
 
+      - name: Report Versions
+        run: make versions
+
       - name: Validate composer.json
         run: make validate-deps
 
@@ -30,7 +33,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: vendor
-          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-php-${{ matrix.php-version }}-${{ hashFiles('**/composer.lock') }}
 
       - name: Fetch Dependencies
         if: steps.cache-composer-deps.outputs.cache-hit != 'true'
