@@ -3,7 +3,7 @@ name: Ordinary PHP Composer Library Test
 on:
   pull_request:
   push:
-    branches: [ "main" ]
+    branches: [ "1.x" ]
 
 permissions:
   contents: read
