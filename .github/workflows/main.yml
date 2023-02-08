@@ -10,6 +10,9 @@ permissions:
 
 jobs:
   build:
+    strategy:
+      matrix:
+        php-version: ["8.1", "8.2"]
 
     runs-on: ubuntu-latest
 
@@ -17,7 +20,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Build Container
-        run: make php-image
+        run: make PHP_VERSION=${{ matrix.php-version }} php-image
 
       - name: Validate composer.json
         run: make validate-deps
